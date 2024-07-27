@@ -6,11 +6,12 @@ from praw import Reddit
 # Reddit user object
 load_dotenv()
 reddit = Reddit(
-	client_id=os.getenv("CLIENT_ID"),
-	client_secret=os.getenv("CLIENT_SECRET"),
+	client_id=str(os.getenv("CLIENT_ID")),
+	client_secret=str(os.getenv("CLIENT_SECRET")),
 	user_agent="reddit_reader by user")
 
-URL = "https://www.reddit.com/r/postmates/comments/1dsmnm3/monthly_existing_user_promo_code_thread/"
+URL = str(os.getenv("TARGET_URL"))
+
 post = reddit.submission(url = URL)
 
 
