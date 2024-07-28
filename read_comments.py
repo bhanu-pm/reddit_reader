@@ -53,7 +53,8 @@ if used_comments is not None:
 		else:
 			break
 elif used_comments is None:
-	to_be_used.insert(0, new_comment)
+	for new_comment in top_level_comments:
+		to_be_used.insert(0, new_comment)
 
 # Sorted in the order of latest/newest first, joined at start to previously used comments
 now_used = to_be_used.copy()
