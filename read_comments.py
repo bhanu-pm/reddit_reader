@@ -58,7 +58,10 @@ elif used_comments is None:
 # Sorted in the order of latest/newest first, joined at start to previously used comments
 now_used = to_be_used.copy()
 now_used.sort(reverse=True, key=sorter)
-now_used.extend(used_comments)
+try:
+	now_used.extend(used_comments)
+except:
+	pass
 
 used = {'used_comments': now_used}
 
