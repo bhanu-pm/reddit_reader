@@ -27,10 +27,10 @@ post = reddit.submission(url = URL)
 top_level_comments_obj = post.comments
 
 top_level_comments = []
-for comment in top_level_comments_obj: # -25200 to change time zone to MST
+for comment in top_level_comments_obj:
 	corresponding_replies = []
 	for reply in comment.replies: # Fixing commentforest not dumpable in json error
-		corresponding_replies.append({'r_time': int(reply.created_utc)-25200, 'r_body': reply.body})
+		corresponding_replies.append({'r_time': int(reply.created_utc)-25200, 'r_body': reply.body}) # -25200 to convert time to MST
 	top_level_comments.append({'time':int(comment.created_utc)-25200, 'body':comment.body, 'replies':corresponding_replies})
 
 # Sorting top level comments in order of newest first
