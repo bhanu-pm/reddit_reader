@@ -57,14 +57,15 @@ elif used_comments is None:
 		to_be_used.insert(0, new_comment)
 
 # Sorted in the order of latest/newest first, joined at start to previously used comments
-now_used = to_be_used.copy()
-now_used.sort(reverse=True, key=sorter)
-try:
-	now_used.extend(used_comments)
-except:
-	pass
+if len(to_be_used) > 0:
+	now_used = to_be_used.copy()
+	now_used.sort(reverse=True, key=sorter)
+	try:
+		now_used.extend(used_comments)
+	except:
+		pass
 
-used = {'used_comments': now_used}
+	used = {'used_comments': now_used}
 
-with open('used_comments_file.json', 'w') as used_comments_file:
-	json.dump(used, used_comments_file)
+	with open('used_comments_file.json', 'w') as used_comments_file:
+		json.dump(used, used_comments_file)
